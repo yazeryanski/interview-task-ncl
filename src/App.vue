@@ -4,8 +4,8 @@
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-tabs align="left">
         <q-route-tab to="/" label="Task" />
-        <q-route-tab to="/page2" label="Adverts" />
-        <q-route-tab to="/page3" label="Admin" />
+        <q-route-tab to="/adverts" label="Adverts" />
+        <q-route-tab to="/admin" label="Admin" />
       </q-tabs>
     </q-header>
 

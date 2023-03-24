@@ -1,11 +1,13 @@
-import type { AdvertHeading } from '@/enums/advertHeading';
+import type { AdvertServiceType } from '@/enums/advertServiceType';
 import type { ICity } from './city';
 import type { IUser } from './user';
 
 export interface IAdvert {
+  id: number;
   city: ICity;
-  heading: AdvertHeading;
+  serviceType: AdvertServiceType;
   date: Date;
+  header: string;
   post: string;
   user: IUser;
 }
