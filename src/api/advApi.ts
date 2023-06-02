@@ -1,4 +1,4 @@
-import { getAdverts, updateAdverts } from '@/services/storage';
+import { getAdverts, updateAdverts } from '@/services/adverts';
 import type { IAdvert } from '@/types/avdert';
 import { advertListMock } from '@/api/mocks/advMock';
 

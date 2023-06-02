@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 
 import { onMounted } from 'vue';
-import { migrateAdverts } from './services/storage';
+import { migrateAdverts } from './services/adverts';
 
 onMounted(() => {
   migrateAdverts();

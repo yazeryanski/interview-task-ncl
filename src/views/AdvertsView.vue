@@ -9,7 +9,7 @@ import { onMounted, reactive } from 'vue';
 import AdvertsList from '@/components/AdvertsList.vue';
 import AdvertsFilter from '@/components/AdvertsFilter.vue';
 
-import { getAdverts } from '@/services/storage';
+import { getAdverts } from '@/services/adverts.js';
 
 import type { IAdvert } from '@/types/avdert';
 

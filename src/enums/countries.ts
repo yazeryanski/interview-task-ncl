@@ -1,7 +1,7 @@
 export enum Country {
-  serbia,
-  georgia,
-  poland,
-  ukraine,
-  thailand,
+  serbia = 'serbia',
+  georgia = 'georgia',
+  poland = 'poland',
+  ukraine = 'ukraine',
+  thailand = 'thailand',
 }
