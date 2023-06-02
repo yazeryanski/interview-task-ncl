@@ -23,9 +23,21 @@ export default {
 
     return Promise.resolve();
   },
-  removeAdvert(advertId: number): Promise<void> {
-    // TODO
+  editAdvert(advert: IAdvert): Promise<void> {
+    const adverts = getAdverts()
+    const [updatedItem] = adverts.filter((currentAdvert) => currentAdvert.id === advert.id)
 
-    return Promise.resolve();
+    adverts[adverts.indexOf(updatedItem)] = advert
+
+    updateAdverts(adverts)
+
+    return Promise.resolve()
   },
+  removeAdvert(advertId: number): Promise<void> {
+    const adverts = getAdverts()
+    const updatedAdverts = adverts.filter((advert) => advert.id !== advertId)
+
+    updateAdverts(updatedAdverts)
+    return Promise.resolve()
+  }
 }
