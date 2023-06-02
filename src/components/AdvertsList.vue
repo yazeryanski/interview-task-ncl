@@ -3,7 +3,7 @@
     v-for="ad in adverts" 
     :key="ad.id" 
     :header="ad.header"
-    :keywords="ad.serviceType"
+    :category="ad.serviceType"
     :date="ad.date"
     :user="ad.user"
    />

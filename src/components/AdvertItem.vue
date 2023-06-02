@@ -1,7 +1,7 @@
 <template>
   <div class="adv-item bg-white q-mb-md">
     <a class="adv-item__link text-blue text-h5 q-mb-sm">{{ header }}</a>
-    <p class="adv-item__keywords text-weight-light">{{ keywords }}</p>
+    <p class="adv-item__keywords text-weight-light">{{ category }}</p>
     <span class="adv-item__author text-blue q-mr-sm">{{ user?.name || '' }}</span>
     <span class="adv-item__date text-grey">{{ formatDate(date) }}</span>
   </div>
@@ -17,7 +17,7 @@ import type { DateType } from '@/types/common'
 defineProps({
   id: Number,
   header: String,
-  keywords: String,
+  category: String,
   date: {
     type: [Date, String, Number, Dayjs]
   },

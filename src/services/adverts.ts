@@ -1,14 +1,15 @@
 import type { IAdvert } from '@/types/avdert';
 import { advertListMock } from '@/api/mocks/advMock';
+import { Country } from '@/enums/countries';
 
 const itemNames = {
   adverts: 'adverts'
 };
 
-interface IFilter {
+export interface IFilter {
   country?: string;
   city?: string;
-  keyword?: string;
+  category?: string;
 }
 
 export const getAdverts = (filter?: IFilter): IAdvert[] => {
@@ -39,7 +40,7 @@ const getFilteredAdverts = (adverts: IAdvert[], filter: IFilter) => {
   return adverts.filter((ad) => {
     if (filter.country && ad.city.country !== filter.country) return false;
     if (filter.city && ad.city.name !== filter.city) return false;
-    if (filter.keyword && ad.serviceType !== filter.keyword) return false;
+    if (filter.category && ad.serviceType !== filter.category) return false;
 
     return true;
   });

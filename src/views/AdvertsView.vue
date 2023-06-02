@@ -1,5 +1,5 @@
 <template>
-  <adverts-filter />
+  <adverts-filter @change="onFilterChange" />
   <adverts-list :adverts="data.adverts" />
 </template>
 
@@ -12,6 +12,7 @@ import AdvertsFilter from '@/components/AdvertsFilter.vue';
 import { getAdverts } from '@/services/adverts.js';
 
 import type { IAdvert } from '@/types/avdert';
+import type { IFilter } from '@/services/adverts';
 
 interface IData {
   adverts: IAdvert[]
@@ -24,6 +25,10 @@ const data: IData = reactive({
 onMounted(() => {
   data.adverts = getAdverts();
 })
+
+const onFilterChange = (filters: IFilter) => {
+  data.adverts = getAdverts(filters)
+}
 
 </script>
 <style lang="scss" scoped></style>
