@@ -1,18 +1,29 @@
 <template>
   <adverts-filter />
-  <advert-item />
+  <adverts-list :adverts="data.adverts" />
 </template>
-<script lang="ts">
 
-import { defineComponent } from 'vue';
-import AdvertItem from '@/components/AdvertItem.vue';
+<script lang="ts" setup>
+import { onMounted, reactive } from 'vue';
+
+import AdvertsList from '@/components/AdvertsList.vue';
 import AdvertsFilter from '@/components/AdvertsFilter.vue';
 
-export default defineComponent({
-  components: { AdvertItem, AdvertsFilter },
-  setup() {
-    return {};
-  },
+import { getAdverts } from '@/services/storage';
+
+import type { IAdvert } from '@/types/avdert';
+
+interface IData {
+  adverts: IAdvert[]
+}
+
+const data: IData = reactive({
+  adverts: []
 })
+
+onMounted(() => {
+  data.adverts = getAdverts();
+})
+
 </script>
 <style lang="scss" scoped></style>
