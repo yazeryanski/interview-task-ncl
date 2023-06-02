@@ -15,3 +15,13 @@
 
   </q-layout>
 </template>
+
+<script lang="ts" setup>
+
+import { onMounted } from 'vue';
+import { migrateAdverts } from './services/storage';
+
+onMounted(() => {
+  migrateAdverts();
+})
+</script>
