@@ -9,10 +9,10 @@ import { onMounted, reactive } from 'vue';
 import AdvertsList from '@/components/AdvertsList.vue';
 import AdvertsFilter from '@/components/AdvertsFilter.vue';
 
-import { getAdverts } from '@/services/adverts.js';
+import { getAdverts } from '@/services/adverts/adverts.js';
 
 import type { IAdvert } from '@/types/avdert';
-import type { IFilter } from '@/services/adverts';
+import type { IFilter } from '@/services/adverts/adverts.js';
 
 interface IData {
   adverts: IAdvert[]

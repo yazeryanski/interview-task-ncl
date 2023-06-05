@@ -1,6 +1,5 @@
 import type { IAdvert } from '@/types/avdert';
 import { advertListMock } from '@/api/mocks/advMock';
-import { Country } from '@/enums/countries';
 
 const itemNames = {
   adverts: 'adverts'

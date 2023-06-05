@@ -1,28 +1,65 @@
 <template>
-  <form @submit.prevent="onSubmit" class="filter-form q-pt-lg q-pb-md">
+  <form
+    @submit.prevent="onSubmit"
+    class="filter-form q-pt-lg q-pb-md"
+  >
     <div class="filter-form__row row bg-white">
       <div class="filter-form__item col-3">
-        <q-select @update:model-value="onCountryChange" clearable v-model="data.selectedCountry"
-          :options="data.countryOptions" label="Страна" outlined transition-show="flip-up" transition-hide="flip-down" />
+        <q-select
+          @update:model-value="onCountryChange"
+          clearable
+          v-model="data.selectedCountry"
+          class="q-custom-field"
+          popup-content-class="q-popup-class"
+          :options="data.countryOptions"
+          label="Страна"
+          outlined
+          transition-show="flip-up"
+          transition-hide="flip-down"
+        />
       </div>
       <div class="filter-form__item col-3">
-        <q-select clearable v-model="data.selectedCity" :options="data.cityOptions" label="Город" outlined
-          transition-show="scale" transition-hide="scale" />
+        <q-select
+          clearable
+          v-model="data.selectedCity"
+          :options="data.cityOptions"
+          label="Город"
+          outlined
+          popup-content-class="q-popup-class"
+          class="q-custom-field"
+          transition-show="scale"
+          transition-hide="scale"
+        />
       </div>
       <div class="filter-form__item col-3">
-        <q-select v-model="data.selectedCategory" clearable :options="data.categoryOptions" label="Рубрика"
-          class="q-custom-field" outlined transition-show="jump-up" transition-hide="jump-up" />
+        <q-select
+          v-model="data.selectedCategory"
+          clearable
+          :options="data.categoryOptions"
+          label="Рубрика"
+          popup-content-class="q-popup-class"
+          class="q-custom-field"
+          outlined
+          transition-show="jump-up"
+          transition-hide="jump-up"
+        />
       </div>
       <div class="filter-form__item col-3">
-        <q-btn type="submit" align="left" class="filter-form__btn" color="secondary" label="Search" />
+        <q-btn
+          type="submit"
+          align="left"
+          class="filter-form__btn"
+          color="secondary"
+          label="Search"
+        />
       </div>
     </div>
   </form>
 </template>
 
 <script lang="ts" setup>
-import { getCategories, getCities, getCountries } from '@/services/advertFilter';
 import { reactive } from 'vue';
+import { getCategories, getCities, getCountries } from '@/services/adverts/filter.js';
 
 const emit = defineEmits(['change']);
 
@@ -59,8 +96,7 @@ const onSubmit = () => {
 }
 </script>
 
-<style lang="scss">
-.filter-form {
+<style lang="scss">.filter-form {
 
   &__item {
     padding: 5px;
@@ -78,6 +114,10 @@ const onSubmit = () => {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-transform: capitalize;
 }
-</style>
+
+.q-popup-class {
+  text-transform: capitalize;
+}</style>
 
