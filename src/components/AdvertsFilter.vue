@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { getCategories, getCities, getCountries } from '@/services/adverts/filter.js';
 
 const emit = defineEmits(['change']);
@@ -73,16 +73,24 @@ interface IData {
 }
 
 const data: IData = reactive({
-  cityOptions: getCities(),
-  countryOptions: getCountries(),
-  categoryOptions: getCategories(),
+  cityOptions: [],
+  countryOptions: [],
+  categoryOptions: [],
   selectedCity: null,
   selectedCountry: null,
   selectedCategory: null,
 })
 
-const onCountryChange = (value: string) => {
-  data.cityOptions = getCities(value);
+
+onMounted(async () => {
+  const [cities, countries, categories] = await Promise.all([getCities(), getCountries(), getCategories()]);
+  data.cityOptions =  cities;
+  data.countryOptions =  countries;
+  data.categoryOptions =  categories;
+})
+
+const onCountryChange = async (value: string) => {
+  data.cityOptions = await getCities(value);
   if (!data.selectedCity) return;
   if (data.cityOptions.indexOf(data.selectedCity) === -1) data.selectedCity = null;
 }
@@ -97,7 +105,6 @@ const onSubmit = () => {
 </script>
 
 <style lang="scss">.filter-form {
-
   &__item {
     padding: 5px;
   }

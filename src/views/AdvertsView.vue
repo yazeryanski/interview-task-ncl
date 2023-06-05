@@ -1,6 +1,7 @@
 <template>
   <adverts-filter @change="onFilterChange" />
-  <adverts-list :adverts="data.adverts" />
+  <adverts-list v-if="data.adverts.length" :adverts="data.adverts" />
+  <adverts-empty-dialoge v-else />
 </template>
 
 <script lang="ts" setup>
@@ -8,8 +9,9 @@ import { onMounted, reactive } from 'vue';
 
 import AdvertsList from '@/components/AdvertsList.vue';
 import AdvertsFilter from '@/components/AdvertsFilter.vue';
+import AdvertsEmptyDialoge from '@/components/AdvertsEmptyDialoge.vue';
 
-import { getAdverts } from '@/services/adverts/adverts.js';
+import advertsApi from '@/api/advApi';
 
 import type { IAdvert } from '@/types/avdert';
 import type { IFilter } from '@/services/adverts/adverts.js';
@@ -22,12 +24,12 @@ const data: IData = reactive({
   adverts: []
 })
 
-onMounted(() => {
-  data.adverts = getAdverts();
+onMounted( async () => {
+  data.adverts = await advertsApi.getAdverts();
 })
 
-const onFilterChange = (filters: IFilter) => {
-  data.adverts = getAdverts(filters)
+const onFilterChange = async (filters: IFilter) => {
+  data.adverts = await advertsApi.getAdverts(filters)
 }
 
 </script>
